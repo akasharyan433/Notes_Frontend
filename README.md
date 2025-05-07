@@ -97,3 +97,20 @@ yarn dev
 
 The application will be available at `http://localhost:5173`
 
+
+## Project Structure
+
+src/
+├── assets/ # Static assets
+├── components/ # Reusable components
+│ ├── auth/ # Authentication components
+│ ├── layout/ # Layout components
+│ ├── notes/ # Notes-related components
+│ └── ui/ # UI components
+├── context/ # React context providers
+├── hooks/ # Custom React hooks
+├── pages/ # Page components
+├── services/ # API services
+├── styles/ # Global styles
+└── utils/ # Utility functions
+
