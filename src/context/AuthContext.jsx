@@ -5,14 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '../services/api';
 
+// Create authentication context
 export const AuthContext = createContext();
 
+/**
+ * AuthProvider component manages authentication state and provides auth-related functions
+ * to the entire application through React Context
+ */
 export const AuthProvider = ({ children }) => {
+  // Authentication state
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate ? useNavigate() : null;
 
+  // Update API headers and local storage when token changes
   useEffect(() => {
     if (token) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -23,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
+  // Load user data when token is available
   useEffect(() => {
     const loadUser = async () => {
       setLoading(true);
@@ -41,6 +49,11 @@ export const AuthProvider = ({ children }) => {
     loadUser();
   }, [token]);
 
+  /**
+   * Register a new user
+   * @param {Object} userData - User registration data
+   * @returns {Promise} Registration response
+   */
   const register = useCallback(async (userData) => {
     try {
       setLoading(true);
@@ -58,6 +71,11 @@ export const AuthProvider = ({ children }) => {
     }
   }, [navigate]);
 
+  /**
+   * Login an existing user
+   * @param {Object} userData - User login credentials
+   * @returns {Promise} Login response
+   */
   const login = useCallback(async (userData) => {
     try {
       setLoading(true);
@@ -75,6 +93,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, [navigate]);
 
+  /**
+   * Logout current user and clear authentication state
+   */
   const logout = useCallback(() => {
     setToken(null);
     setCurrentUser(null);
@@ -82,6 +103,7 @@ export const AuthProvider = ({ children }) => {
     toast.info('Logged out successfully');
   }, [navigate]);
 
+  // Provide authentication context to children
   return (
     <AuthContext.Provider
       value={{

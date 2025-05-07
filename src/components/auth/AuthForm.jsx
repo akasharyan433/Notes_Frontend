@@ -8,6 +8,7 @@ import Divider from '../ui/Divider';
 import { useAuth } from '../../hooks/useAuth';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
+// Styled components for the authentication form layout
 const AuthContainer = styled.div`
   min-height: 100vh;
   display: flex;
@@ -53,13 +54,17 @@ const BottomText = styled.p`
 `;
 
 const AuthForm = ({ isLogin }) => {
+  // Form state management
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
   });
+  
+  // Authentication hooks and loading state
   const { login, register, loading } = useAuth();
 
+  // Handle input field changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -67,6 +72,7 @@ const AuthForm = ({ isLogin }) => {
     });
   };
 
+  // Handle form submission for both login and registration
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -88,6 +94,7 @@ const AuthForm = ({ isLogin }) => {
     }
   };
 
+  // Show loading spinner during authentication
   if (loading) {
     return <LoadingSpinner />;
   }

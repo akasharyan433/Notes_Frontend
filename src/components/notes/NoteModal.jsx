@@ -9,6 +9,7 @@ import { createNote, updateNote } from '../../services/noteService';
 import MarkdownGuide from './MarkdownGuide';
 import MarkdownPreview from './MarkdownPreview';
 
+// Styled components for modal layout and styling
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -230,12 +231,14 @@ const ActionButton = styled(Button)`
 `;
 
 const NoteModal = ({ isOpen, closeModal, currentNote, refetchNotes }) => {
+    // State management for note data and UI
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [pinned, setPinned] = useState(false);
     const [loading, setLoading] = useState(false);
     const [previewMode, setPreviewMode] = useState(false);
     
+    // Initialize form data when modal opens or note changes
     useEffect(() => {
       if (currentNote) {
         setTitle(currentNote.title || '');
@@ -248,7 +251,8 @@ const NoteModal = ({ isOpen, closeModal, currentNote, refetchNotes }) => {
       }
       setPreviewMode(false);
     }, [currentNote, isOpen]);
-    
+
+    // Handle note creation/update submission
     const handleSubmit = async () => {
       if (!title.trim()) {
         toast.error('Title is required');
@@ -274,7 +278,8 @@ const NoteModal = ({ isOpen, closeModal, currentNote, refetchNotes }) => {
         setLoading(false);
       }
     };
-    
+
+    // Toggle note pin status
     const togglePin = () => {
       setPinned(!pinned);
     };

@@ -10,14 +10,21 @@ import NotFoundPage from './pages/NotFoundPage';
 
 import AppLayout from './components/layout/AppLayout';
 
+/**
+ * AppRoutes component defines the application's routing structure
+ * Routes are organized into three categories:
+ * 1. Public routes - accessible without authentication
+ * 2. Protected routes - require user authentication
+ * 3. 404 route - handles undefined routes
+ */
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public Routes */}
+      {/* Public Routes - Accessible without authentication */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       
-      {/* Protected Routes */}
+      {/* Protected Routes - Require authentication */}
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Navigate to="/notes" replace />} />
@@ -27,7 +34,7 @@ const AppRoutes = () => {
         </Route>
       </Route>
       
-      {/* 404 Route */}
+      {/* 404 Route - Handles undefined routes */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
