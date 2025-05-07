@@ -1,12 +1,95 @@
-# React + Vite
+# Notes App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features Implemented
 
-Currently, two official plugins are available:
+### Authentication
+- User registration and login
+- JWT-based authentication
+- Protected routes
+- Persistent sessions
+- Secure password handling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Notes Management
+- Create new notes with title and content
+- Edit existing notes
+- Delete notes
+- Markdown support for note content
+- Note pinning functionality
+- Real-time preview of markdown content
+- Responsive grid/list view of notes
 
-## Expanding the ESLint configuration
+### User Experience
+- Dark/Light mode toggle
+- Responsive design for all screen sizes
+- Toast notifications for user feedback
+- Loading states and error handling
+- Smooth transitions and animations
+- Markdown guide for content formatting
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Additional Features
+- Search functionality for notes
+- Note filtering and sorting
+- User profile management
+- Clean and intuitive UI/UX
+- Mobile-first approach
+
+## Technology Stack
+
+### Core Technologies
+- React 18
+- Vite (Build tool)
+- React Router v6 (Routing)
+- Styled Components (Styling)
+- Axios (API client)
+
+### State Management & Data Flow
+- React Context API
+- Custom hooks for business logic
+- Local storage for persistence
+
+### UI/UX Libraries
+- React Icons
+- React Toastify (Notifications)
+- React MD Editor (Markdown editor)
+- Styled Components (CSS-in-JS)
+
+### Development Tools
+- ESLint (Code linting)
+- Prettier (Code formatting)
+- Vite (Development server)
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd notes-app/frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env` file in the root directory:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+4. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:5173`
+
